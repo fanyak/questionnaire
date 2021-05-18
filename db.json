@@ -1,0 +1,20 @@
+{
+    "questions":[
+       {
+          "title":"How much",
+          "choices":[
+             "a lot",
+             "not much",
+             "too much"
+          ]
+       },
+       {
+          "title":"How Long",
+          "choices":[
+             "a long time",
+             "not long",
+             "too log"
+          ]
+       }
+    ]
+ }
