@@ -14,27 +14,27 @@ const get = (url) => {
           headers: {
               Accept: 'application/json'
           }
-      }).then(response => { console.log(response)
+      }).then(response => { console.log(response);
           clearTimeout(timeOutFn);
           if(!response.ok) {
-              throw new Error(`rejected because of http error: ${response.status}`)
+              throw new Error(`rejected because of http error: ${response.status}`);
           } 
           if(!hasTimedOut) {
               resolve(response.json());            
           }
-      }).catch(error => { console.log(1111, error)
+      }).catch(error => { console.log(1111, error);
           if(hasTimedOut){
               return;
           }
           reject(error);
-      })
-    }) /* USE TRY and catch with await instead of catch here
+      });
+    }); /* USE TRY and catch with await instead of catch here
     /* BUT MUST REMEMBER TO USE TRY AND CATCH
      .catch((error)=> {
         console.log(error);
         throw error;
     });*/ 
-  }
+  };
 
 
   const post = (url) => (body) => {
@@ -43,7 +43,7 @@ const get = (url) => {
       return new Promise(function(resolve, reject) {
         timeOutFn = setTimeout(() => {
             hasTimedOut = true;
-            reject('request has timedout')
+            reject('request has timedout');
         }, TIMEOUT_DEFAULT);
 
         fetch(url, {
@@ -54,16 +54,16 @@ const get = (url) => {
             }
         }).then(response => {
             if(!response.ok) {
-                throw new Error (`${response.status}`)
+                throw new Error (`${response.status}`);
             }
             if(!hasTimedOut) {
-                resolve(response.json())
+                resolve(response.json());
             }
         }).catch((error) => {
             if(hasTimedOut) {
                 return;
             }
-            reject(error)
-        })
-      })
-  }
+            reject(error);
+        });
+      });
+  };
